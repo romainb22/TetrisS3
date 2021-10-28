@@ -73,6 +73,8 @@ block * create_new_block();
 
 game * create_new_game();
 
+int * get_all_block_parts(block * myBlock);
+
 void delete_block(block* myBLock, game* myGame);
 
 #endif

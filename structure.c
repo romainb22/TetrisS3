@@ -30,6 +30,21 @@ game * create_new_game(){
   return myGame;
 }
 
+
+int * get_all_block_parts(block * myBlock){
+  int myShape[8];
+  int i;
+  myshape[0] = myBlock->posX;
+  myshape[1] = myBlock->posY;
+  switch(myBlock->blockShape){
+    case Zshape:
+      /* WIP */
+      break;
+    default:
+      break;
+  }
+}
+
 void delete_block(block* myBLock, game* myGame){
   /*
   Update Gboard with 1 where the block stands
