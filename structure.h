@@ -2,7 +2,6 @@
 #define _STRUCTURE_H_
 #define G_BOARD_WIDTH 9
 #define G_BOARD_HEIGHT 30
-#include <MLV/MLV_all.h>
 
 typedef enum{
 	left,

@@ -1,3 +1,5 @@
+#ifndef _STRUCTURE_C_
+#define _STRUCTURE_C_
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -27,3 +29,5 @@ game * create_new_game(){
   myGame->score = 0;
   return myGame;
 }
+
+#endif

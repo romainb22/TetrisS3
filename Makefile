@@ -4,11 +4,11 @@ MLVG=`pkg-config --cflags MLV` `pkg-config --libs-only-other --libs-only-L MLV`
 MLVD=`pkg-config --libs-only-l MLV`
 
 
-main :	main.c *.o
-	$(CC) $(CFLAGS) $(MLVG) -g main.c structure.o $(MLVD) -o tetris
+main :	main.c structure
+	$(CC) $(CFLAGS) $(MLVG) -g main.c *.o $(MLVD) -o tetris
 
-structure.o :	structure.c structure.h
+structure :	structure.c structure.h
 	$(CC) $(OPTIONS) -c structure.c
 
 clean :
-	rm -f *.o *~ main
+	rm -f *.o *~ tetris
