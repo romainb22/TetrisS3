@@ -73,4 +73,6 @@ block * create_new_block();
 
 game * create_new_game();
 
+void delete_block(block* myBLock, game* myGame);
+
 #endif
