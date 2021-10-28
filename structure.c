@@ -31,21 +31,215 @@ game * create_new_game(){
 }
 
 
-int * get_all_block_parts(block * myBlock){
-  int myShape[8];
-  int i;
-  myshape[0] = myBlock->posX;
-  myshape[1] = myBlock->posY;
+void get_all_block_parts(block * myBlock, int * myShape){
+  /*
+  Get all block's part from myBlock->posX and myBlock->posY
+  depending on the block shape, and with a zero rotation.
+  */
+  /* All tetris' blocks have 4 parts composing it */
+  myShape[0] = myBlock->posX;
+  myShape[1] = myBlock->posY;
   switch(myBlock->blockShape){
-    case Zshape:
-      /* WIP */
+    case ZShape:
+      switch(myBlock->blockRotation){
+        case zero:
+        case hundredEighty:
+          myShape[2] = myBlock->posX+1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX+1;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX+2;
+          myShape[7] = myBlock->posY+1;
+          break;
+        case ninety:
+        case twoHundredSeventy:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX-1;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX-1;
+          myShape[7] = myBlock->posY+2;
+          break;
+        default:
+          break;
+      }
+      break;
+    case SShape:
+      switch(myBlock->blockRotation){
+        case zero:
+        case hundredEighty:
+          myShape[2] = myBlock->posX-1;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX+1;
+          myShape[7] = myBlock->posY;
+          break;
+        case ninety:
+        case twoHundredSeventy:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX-1;
+          myShape[5] = myBlock->posY;
+          myShape[6] = myBlock->posX-1;
+          myShape[7] = myBlock->posY-1;
+          break;
+        default:
+          break;
+      }
+      break;
+    case LineShape:
+      switch (myBlock->blockRotation) {
+        case zero:
+        case hundredEighty:
+          myShape[2] = myBlock->posX+1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX+2;
+          myShape[5] = myBlock->posY;
+          myShape[6] = myBlock->posX+3;
+          myShape[7] = myBlock->posY;
+          break;
+        case ninety:
+        case twoHundredSeventy:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY+2;
+          myShape[6] = myBlock->posX;
+          myShape[7] = myBlock->posY+3;
+          break;
+        default:
+          break;
+      }
+      break;
+    case TShape:
+      switch(myBlock->blockRotation){
+        case zero:
+          myShape[2] = myBlock->posX-1;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX+1;
+          myShape[7] = myBlock->posY+1;
+          break;
+        case ninety:
+          myShape[2] = myBlock->posX-1;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX;
+          myShape[7] = myBlock->posY+2;
+          break;
+        case hundredEighty:
+          myShape[2] = myBlock->posX-1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX-2;
+          myShape[5] = myBlock->posY;
+          myShape[6] = myBlock->posX-1;
+          myShape[7] = myBlock->posY-1;
+          break;
+        case twoHundredSeventy:
+          myShape[2] = myBlock->posX+1;
+          myShape[3] = myBlock->posY-1;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY-1;
+          myShape[6] = myBlock->posX;
+          myShape[7] = myBlock->posY-2;
+          break;
+        default:
+        break;
+      }
+      break;
+    case SquareShape:
+      myShape[2] = myBlock->posX+1;
+      myShape[3] = myBlock->posY;
+      myShape[4] = myBlock->posX;
+      myShape[5] = myBlock->posY+1;
+      myShape[6] = myBlock->posX+1;
+      myShape[7] = myBlock->posY+1;
+      break;
+    case LShape:
+      switch(myBlock->blockRotation){
+        case zero:
+          myShape[2] = myBlock->posX+1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX;
+          myShape[7] = myBlock->posY+2;
+          break;
+        case ninety:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX-1;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX-2;
+          myShape[7] = myBlock->posY+1;
+          break;
+        case hundredEighty:
+          myShape[2] = myBlock->posX-1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX-1;
+          myShape[5] = myBlock->posY-1;
+          myShape[6] = myBlock->posX-1;
+          myShape[7] = myBlock->posY-2;
+          break;
+        case twoHundredSeventy:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY-1;
+          myShape[4] = myBlock->posX-1;
+          myShape[5] = myBlock->posY-1;
+          myShape[6] = myBlock->posX+2;
+          myShape[7] = myBlock->posY-1;
+          break;
+        default:
+        break;
+      }
+      break;
+    case MirroredLShape:
+      switch(myBlock->blockRotation){
+        case zero:
+          myShape[2] = myBlock->posX+1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY+1;
+          myShape[6] = myBlock->posX;
+          myShape[7] = myBlock->posY+2;
+          break;
+        case ninety:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY+1;
+          myShape[4] = myBlock->posX-1;
+          myShape[5] = myBlock->posY;
+          myShape[6] = myBlock->posX-2;
+          myShape[7] = myBlock->posY;
+          break;
+        case hundredEighty:
+          myShape[2] = myBlock->posX-1;
+          myShape[3] = myBlock->posY;
+          myShape[4] = myBlock->posX;
+          myShape[5] = myBlock->posY-1;
+          myShape[6] = myBlock->posX;
+          myShape[7] = myBlock->posY-2;
+          break;
+        case twoHundredSeventy:
+          myShape[2] = myBlock->posX;
+          myShape[3] = myBlock->posY-1;
+          myShape[4] = myBlock->posX+1;
+          myShape[5] = myBlock->posY;
+          myShape[6] = myBlock->posX+2;
+          myShape[7] = myBlock->posY;
+          break;
+      }
       break;
     default:
       break;
   }
+  return;
 }
 
-void delete_block(block* myBLock, game* myGame){
+
+void delete_block(block* myBlock, game* myGame){
   /*
   Update Gboard with 1 where the block stands
   */

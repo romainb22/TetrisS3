@@ -73,7 +73,9 @@ block * create_new_block();
 
 game * create_new_game();
 
-int * get_all_block_parts(block * myBlock);
+void get_all_block_parts(block * myBlock, int * myShape);
+
+void rotate_block(block * myBlock, int * parts);
 
 void delete_block(block* myBLock, game* myGame);
 
