@@ -35,8 +35,11 @@ void get_all_block_parts(block * myBlock, int * myShape){
   /*
   Get all block's part from myBlock->posX and myBlock->posY
   depending on the block shape, and with a zero rotation.
+  maybe return an int that states the lowest part of the block ?
   */
-  /* All tetris' blocks have 4 parts composing it */
+  /*
+  All tetris' blocks have 4 parts composing it
+  */
   myShape[0] = myBlock->posX;
   myShape[1] = myBlock->posY;
   switch(myBlock->blockShape){
