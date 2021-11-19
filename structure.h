@@ -1,7 +1,9 @@
 #ifndef _STRUCTURE_H_
 #define _STRUCTURE_H_
 #define G_BOARD_WIDTH 9
-#define G_BOARD_HEIGHT 30
+#define G_BOARD_HEIGHT 20
+#include <MLV/MLV_all.h>
+#include <unistd.h>
 
 typedef enum{
 	left,
@@ -46,14 +48,15 @@ typedef enum{
       X
       X
   */
-  last
+  lastShape /* In order to make %lastShape in functions */
 }shape;
 
 typedef enum{
   zero,
   ninety,
   hundredEighty,
-  twoHundredSeventy
+  twoHundredSeventy,
+	lastRotation /* In order to make %lastRotation in functions */
 }rotation;
 
 typedef struct{
@@ -73,10 +76,12 @@ block * create_new_block();
 
 game * create_new_game();
 
-void get_all_block_parts(block * myBlock, int * myShape);
+int get_all_block_parts(block * myBlock, int * myShape);
 
-void rotate_block(block * myBlock, int * parts);
+void rotate_block(block * myBlock);
 
-void delete_block(block* myBLock, game* myGame);
+void move_block(game * myGame, block * myBlock, int * myShape, int movement);
+
+void delete_block(block* myBLock, game* myGame, int* myShape);
 
 #endif
