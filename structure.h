@@ -76,11 +76,13 @@ block * create_new_block();
 
 game * create_new_game();
 
-int get_all_block_parts(block * myBlock, int * myShape);
+void get_all_block_parts(block * myBlock, int * myShape);
 
 void rotate_block(block * myBlock);
 
-void move_block(game * myGame, block * myBlock, int * myShape, int movement);
+void move_block(game * myGame, block * myBlock, int * myShape, int movement, MLV_Sound * oof);
+
+void delete_lines(game* myGame);
 
 void delete_block(block* myBLock, game* myGame, int* myShape);
 
